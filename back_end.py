@@ -4,7 +4,7 @@ from flasgger import Swagger
 from flask_cors import CORS
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, supports_credentials=True)
 dbname = 'database.db'
 swagger = Swagger(app)
 
@@ -153,6 +153,9 @@ def get_tarefas():
     tarefas = [dict(r) for r in rows]
     conn.close()
     return jsonify(tarefas), 200
+
+
+
 
 @app.route('/tarefas/status/<int:status_id>', methods=['GET'])
 def get_tarefas_por_status(status_id):
@@ -398,6 +401,92 @@ def get_status():
 
     status_list = [dict(r) for r in rows]
     return jsonify(status_list), 200
+
+@app.route('/tarefas/<int:tarefa_id>', methods=['GET'])
+def get_tarefa_por_id(tarefa_id):
+    """
+    Busca uma tarefa pelo ID, retornando os nomes de prioridade, status e usuário.
+    ---
+    tags:
+      - Tarefas
+    parameters:
+      - name: tarefa_id
+        in: path
+        type: integer
+        required: true
+        description: ID da tarefa a ser buscada
+    responses:
+      200:
+        description: Tarefa encontrada
+        schema:
+          type: object
+          properties:
+            id:
+              type: integer
+            titulo:
+              type: string
+            descricao:
+              type: string
+            prioridade:
+              type: string
+            status:
+              type: string
+            usuario:
+              type: string
+      404:
+        description: Tarefa não encontrada
+        schema:
+          type: object
+          properties:
+            error:
+              type: string
+    """
+    conn = data_base_connection()
+    cur = conn.cursor()
+    cur.execute('SELECT * FROM Tarefas WHERE ID = ?', (tarefa_id,))
+    tarefa = cur.fetchone()
+    if not tarefa:
+        conn.close()
+        return jsonify({"error": "Tarefa não encontrada"}), 404
+
+    tarefa_dict = dict(tarefa)
+
+    # Buscar nome da prioridade
+    prioridade_nome = None
+    if tarefa_dict.get("fk_prioridade"):
+        cur.execute('SELECT Nome_prioridade FROM Prioridade WHERE ID = ?', (tarefa_dict["fk_prioridade"],))
+        row = cur.fetchone()
+        prioridade_nome = row["Nome_prioridade"] if row else None
+
+    # Buscar nome do status
+    status_nome = None
+    if tarefa_dict.get("fk_status"):
+        cur.execute('SELECT Nome_status FROM Status WHERE ID = ?', (tarefa_dict["fk_status"],))
+        row = cur.fetchone()
+        status_nome = row["Nome_status"] if row else None
+
+    # Buscar nome do usuário
+    usuario_nome = None
+    if tarefa_dict.get("fk_usuario"):
+        cur.execute('SELECT Nome_usuario FROM Usuario WHERE ID = ?', (tarefa_dict["fk_usuario"],))
+        row = cur.fetchone()
+        usuario_nome = row["Nome_usuario"] if row else None
+
+    conn.close()
+
+    # Montar resposta
+    resposta = {
+        "id": tarefa_dict.get("ID"),
+        "Titulo": tarefa_dict.get("Titulo"),
+        "Descricao_tarefa": tarefa_dict.get("Descricao_tarefa"),
+        "Data_de_criacao": tarefa_dict.get("Data_de_criacao"),
+        "Prazo_de_conclusao": tarefa_dict.get("Prazo_de_conclusao"),
+        "Tempo_estimado": tarefa_dict.get("Tempo_estimado"),
+        "prioridade": prioridade_nome,
+        "status": status_nome,
+        "usuario": usuario_nome
+    }
+    return jsonify(resposta), 200
 
 
 if __name__ == '__main__':
