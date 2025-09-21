@@ -116,6 +116,33 @@ licensed under <a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-
 
 ## 🎓 Referências
 
+### 📘 Python / Programação
+- **BARRY, P.** *Use a cabeça!: Python*. Rio de Janeiro: Alta Books, 2018.  
+- **MUNIZ, A. et al.** *Jornada Python: uma jornada imersiva na aplicabilidade de uma das mais poderosas linguagens de programação do mundo*. Rio de Janeiro: Brasport, 2022.  
+- **RAMALHO, L.** *Python fluente: programação clara, concisa e eficaz*. São Paulo: Novatec, 2015.  
+- **SEVERANCE, C. R.** *Python para todos: explorando dados com Python 3*. [S. I.]: Elliott Hauser e Sue Blumenberg, 2020.  
+- **PYTHON SOFTWARE FOUNDATION.** *The Python tutorial*. Python.org.  
+  Disponível em: [https://docs.python.org/3/tutorial/](https://docs.python.org/3/tutorial/).  
+  Acesso em: 20 mai. 2025.  
+
+---
+
+### 🗄️ Bancos de Dados
+- **CODD, E. F.** *A relational model of data for large shared data banks*. *Communications of the ACM*, v. 13, n. 6, p. 377-387, 1970.  
+- **ELMASRI, R.; NAVATHE, S. B.** *Sistemas de bancos de dados: fundamentos e aplicações*. 6. ed. Campinas: Pearson Universidades, 2010.  
+- **GARCIA-MOLINA, H.; ULLMAN, J. D.; WIDOM, J.** *Database systems: the complete book*. Hoboken: Prentice Hall, 2008.  
+- **RAMAKRISHNAN, R.; GEHRKE, J.** *Sistemas de gerenciamento de bancos de dados*. 3. ed. Porto Alegre: AMGH, 2008.  
+- **SILBERSCHATZ, A.; KORTH, H. F.; SUDARSHAN, S.** *Sistema de bancos de dados*. Rio de Janeiro: Elsevier-Campus, 2012.  
+
+---
+
+### 🛠️ Engenharia de Software / APIs / Web
+- **FIELDING, R. et al.** *Hypertext transfer protocol: HTTP/1.1*. Datatracker, 1999.  
+  Disponível em: [https://datatracker.ietf.org/doc/html/rfc2616](https://datatracker.ietf.org/doc/html/rfc2616).  
+- **BIEHL, M.** *REST API design rulebook: designing consistent RESTful web service interfaces*. Sebastopol: O'Reilly Media, 2011.  
+- **MASSE, M.** *REST API design rulebook: designing consistent RESTful web service interfaces*. 1. ed. Sebastopol: O'Reilly Media, 2011.  
+- **KALINOWSKI, M.; ESCOVEDO, T.; VILLAMIZAR, H.; LOPES, H.** *Engenharia de Software para Ciência de Dados: um guia de boas práticas com ênfase na construção de sistemas de Machine Learning em Python*. São Paulo: Casa do Código, 2023.  
+- **SHKLAR, L.; ROSEN, R.** *Web application architecture: principles, protocols and practices*. 2. ed. Hoboken: John Wiley & Sons, 2009.  
 
 
 ## 🙏 Agradecimentos
